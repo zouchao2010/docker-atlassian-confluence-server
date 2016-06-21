@@ -58,7 +58,7 @@ The `latest` tag matches the most recent release of Atlassian Confluence Server.
 So `atlassian/confluence-server:latest` will use the newest stable version of Confluence Server available.
  
 Alternatively, you can use a specific minor version of Confluence Server by using a version number
-tag: `atlassian/confluence-server:5.9`. This will install the latest `5.9.x` version that
+tag: `atlassian/confluence-server:5.10`. This will install the latest `5.10.x` version that
 is available.
 
 For the latest developer (EAP) release use `atlassian/confluence-server:eap`. This will install our latest milestone (not supported for use in production).  
@@ -72,6 +72,11 @@ See https://github.com/docker/docker/issues/4023 for details.
 
 To work around this issue, use a different host operating system other than Mac OSX until a newer release of Docker fixes this issue.
  
-# Issue tracker
- 
-Please raise an [issue](https://jira.atlassian.com/secure/CreateIssueDetails!init.jspa?pid=10470&issuetype=1&components=10461&labels=affects-server&labels=docker) if you encounter any problems with this Dockerfile.
+# Support
+
+This Docker image is great for evaluating Confluence, however it does use OpenJDK which is not supported for running Confluence in production. 
+
+To meet our supported platform requirements, you'll need to build your own image based on [Oracle JDK](https://github.com/oracle/docker-images/tree/master/OracleJDK). See [Update the Confluence Docker image to use Oracle JDK ](https://confluence.atlassian.com/display/CONFKB/Update+the+Confluence+Docker+image+to+use+Oracle+JDK) for more info. 
+
+For product support go to [support.atlassian.com](http://support.atlassian.com).  
+
