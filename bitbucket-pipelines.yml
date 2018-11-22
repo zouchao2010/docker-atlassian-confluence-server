@@ -15,6 +15,7 @@ pipelines:
             - export GIT_USER=pipelinesagent
             - export GIT_EMAIL=pipelines-agent@atlassian.com
             - export MAC_PRODUCT_KEY=confluence
+            - export SHOULD_CREATE_LATEST_TAG=false
             - python /usr/src/app/create_release.py
   branches:
     base-6:
@@ -28,4 +29,5 @@ pipelines:
             - export GIT_USER=pipelinesagent
             - export GIT_EMAIL=pipelines-agent@atlassian.com
             - export MAC_PRODUCT_KEY=confluence
+            - export SHOULD_CREATE_LATEST_TAG=false
             - python /usr/src/app/update_release.py
