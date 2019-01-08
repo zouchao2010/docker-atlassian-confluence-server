@@ -4,30 +4,26 @@ clone:
 
 pipelines:
   custom:
-    create-release-base-6:
+    create-release-base-6-alpine:
       - step:
           script:
+            - git remote set-url origin ${BITBUCKET_GIT_HTTP_ORIGIN}
             - git fetch --all
-            - export BASE_BRANCH=base-6
-            - export BASE_VERSION=6
-            - export DOCKER_REPO=atlassian/confluence-server
-            - export DOCKERFILE_VERSION_STRING=CONFLUENCE_VERSION
-            - export GIT_USER=pipelinesagent
-            - export GIT_EMAIL=pipelines-agent@atlassian.com
-            - export MAC_PRODUCT_KEY=confluence
-            - export SHOULD_CREATE_LATEST_TAG=false
-            - python /usr/src/app/create_release.py
+            - export BASE_BRANCH='base-6'
+            - export MAC_PRODUCT_KEY='confluence'
+            - export DOCKERFILE_VERSION_STRING='CONFLUENCE_VERSION'
+            - export DEFAULT_RELEASE='false'
+            - export ADDITIONAL_TAG_SUFFIXES='alpine,alpine-adoptopenjdk8'
+            - python /usr/src/app/run.py --create
   branches:
     base-6:
       - step:
           script:
+            - git remote set-url origin ${BITBUCKET_GIT_HTTP_ORIGIN}
             - git fetch --all
-            - export BASE_BRANCH=base-6
-            - export BASE_VERSION=6
-            - export DOCKER_REPO=atlassian/confluence-server
-            - export DOCKERFILE_VERSION_STRING=CONFLUENCE_VERSION
-            - export GIT_USER=pipelinesagent
-            - export GIT_EMAIL=pipelines-agent@atlassian.com
-            - export MAC_PRODUCT_KEY=confluence
-            - export SHOULD_CREATE_LATEST_TAG=false
-            - python /usr/src/app/update_release.py
+            - export BASE_BRANCH='base-6'
+            - export MAC_PRODUCT_KEY='confluence'
+            - export DOCKERFILE_VERSION_STRING='CONFLUENCE_VERSION'
+            - export DEFAULT_RELEASE='false'
+            - export ADDITIONAL_TAG_SUFFIXES='alpine,alpine-adoptopenjdk8'
+            - python /usr/src/app/run.py --update
