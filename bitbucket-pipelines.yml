@@ -18,6 +18,8 @@ pipelines:
             - export TAG_SUFFIX=ubuntu-18.04-adoptopenjdk8
             - export SHOULD_CREATE_LATEST_TAG=true
             - python /usr/src/app/create_release.py
+            - curl -X POST -H "Content-Type:application/json" -d '{"tag":"registry.hub.docker.com/atlassian/confluence-server:latest", "annotations":{"owner":"smadi"}}' \
+              https://docker-scanner-web-service.us-east-1.prod.atl-paas.net/api/scan
   branches:
     base-6-adoptopenjdk8:
       - step:
@@ -33,3 +35,5 @@ pipelines:
             - export TAG_SUFFIX=ubuntu-18.04-adoptopenjdk8
             - export SHOULD_CREATE_LATEST_TAG=true
             - python /usr/src/app/update_release.py
+            - curl -X POST -H "Content-Type:application/json" -d '{"tag":"registry.hub.docker.com/atlassian/confluence-server:latest", "annotations":{"owner":"smadi"}}' \
+              https://docker-scanner-web-service.us-east-1.prod.atl-paas.net/api/scan
