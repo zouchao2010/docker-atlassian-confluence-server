@@ -23,7 +23,7 @@ RUN apk add --no-cache ca-certificates wget curl openssh bash procps openssl per
 
 COPY entrypoint.sh              /entrypoint.sh
 
-ARG CONFLUENCE_VERSION=6.3.3
+ARG CONFLUENCE_VERSION=6.15.2
 ARG DOWNLOAD_URL=http://www.atlassian.com/software/confluence/downloads/binary/atlassian-confluence-${CONFLUENCE_VERSION}.tar.gz
 
 COPY . /tmp
