@@ -36,5 +36,7 @@ RUN mkdir -p                             ${CONFLUENCE_INSTALL_DIR} \
     && sed -i -e 's/Context path=""/Context path="${catalinaContextPath}"/' ${CONFLUENCE_INSTALL_DIR}/conf/server.xml
 
 # Workaround for AdoptOpenJDK fontconfig bug
-RUN ln -s /lib/libc.musl-x86_64.so.1 /usr/lib/libc.musl-x86_64.so.1
+RUN ln -s /usr/lib/libfontconfig.so.1 /usr/lib/libfontconfig.so \
+    && ln -s /lib/libuuid.so.1 /usr/lib/libuuid.so.1 \
+    && ln -s /lib/libc.musl-x86_64.so.1 /usr/lib/libc.musl-x86_64.so.1
 ENV LD_LIBRARY_PATH /usr/lib
