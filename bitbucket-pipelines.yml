@@ -2,7 +2,7 @@ image: atlassian/docker-release-maker:latest
 
 pipelines:
   custom:
-    create-release-base-6:
+    create-release-base-6-alpine:
       - step:
           services:
             - docker
@@ -16,7 +16,7 @@ pipelines:
             - docker login --username ${DOCKER_USERNAME} --password ${DOCKER_PASSWORD}
             - python /usr/src/app/run.py --create
   branches:
-    base-6:
+    base-6-alpine:
       - step:
           services:
             - docker
