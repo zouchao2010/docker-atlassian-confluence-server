@@ -1,4 +1,4 @@
-FROM adoptopenjdk/openjdk8:slim
+FROM adoptopenjdk:latest
 
 ENV RUN_USER							confluence
 ENV RUN_GROUP							confluence
